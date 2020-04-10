@@ -12,9 +12,9 @@ Instruction to reproduce our results
 
 ## Authors
 
-* ** César Roaldès** 
-* ** Morgane Hoffmann**
-* ** Paul Graffan**
+* **César Roaldès** 
+* **Morgane Hoffmann**
+* **Paul Graffan**
 
 
 
