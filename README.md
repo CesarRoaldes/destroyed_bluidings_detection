@@ -5,7 +5,9 @@ The Syrian conflict has been the biggest humanitarian crisis in recent time taki
 
 ## Get started with the code
 
-Instruction to reproduce our results 
+Instruction to reproduce our results :  
+  
+We have numbered our notebooks so that the user can easily find their way around in the required order. The main notebooks are gathered in the folder **notebooks**, while the part concerning transfer learning on the EuroSAT dataset in set aside in the folder **euroSAT**.
 
 ## References
 
