@@ -19,7 +19,7 @@ if __name__ == "__main__":
     description = args.description
     
     # Download
-    setup()
+    # setup()
     # download_images(min_lon, min_lat, max_lon, max_lat, description)
 
     # Predictions

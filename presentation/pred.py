@@ -105,7 +105,7 @@ def run_model(description):
                          + " " * (int(((data_preds.shape[0] - (idx + 1)) / data_preds.shape[0]) * 100)) \
                          + "] %d%%" % int(idx / data_preds.shape[0]*100))
         sys.stdout.flush()
-        time.sleep(0.01)
+        time.sleep(0.005)
     sys.stdout.write("\r[" + "#" * 100 + "] 100%")                
     sys.stdout.write("\n")
         
@@ -128,24 +128,28 @@ def make_map(description):
     
     data_preds['geometry'] = data_preds['centroide']
     data_preds['Coordinates'] = data_preds['centroide'].apply(wkt.loads)
-    # data_preds = data_preds.set_geometry('Coordinates')
+    data_preds = data_preds.set_geometry('Coordinates')
     data_preds = gpd.GeoDataFrame(data_preds, geometry='Coordinates')
+    
+    gpd.GeoSeries(data_preds['Coordinates']).plot(figsize=(10,8), markersize=10)
+    plt.savefig(os.path.join(FIGURE_DIR, 'zone_prediction_' + description + '.jpg'),
+                optimize=True, quality=95)
     
     print("Création de la carte")
     
-    # plt.figure(figsize=(10, 10))
-    
-    ax = gplt.webmap(data_preds, projection=gcrs.WebMercator(), figsize=(14,14))
+    ax = gplt.webmap(data_preds['Coordinates'], projection=gcrs.WebMercator(), figsize=(14,14))
+        
     gplt.kdeplot(data_preds[data_preds['pred_euroSAT'] == 1], cmap='RdYlGn_r', n_levels=30,
                  shade=True, shade_lowest=False, ax=ax, alpha=0.2,
                  label='Predicted density of destroyed buildings')
+    gplt.pointplot(data_preds, ax=ax)
 
     plt.legend(fontsize=5, loc = "lower right")
     plt.title('Models predictions on ' + description, fontsize=10)
-    print('allo')
+
     plt.savefig(os.path.join(FIGURE_DIR, 'model_prediction_' + description + '.jpg'),
                 optimize=True, quality=95)
     print("Le mapping des destructions sur " + description + " est enregistré dans le dossier '{}' !\n\n".format(
-        IMAGES_DIR_DESCRIPTION))
+        FIGURE_DIR))
     
     return 0

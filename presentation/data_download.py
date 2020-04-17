@@ -1,4 +1,6 @@
 import os
+import sys
+import time
 import math
 import requests
 import urllib
@@ -129,7 +131,16 @@ def download_images(min_lon, min_lat, max_lon, max_lat, description):
             + '&size='+ size_str + '&maptype=satellite&key=' + key 
         file_name = description+ '_' + str(lon) + '_' + str(lat) +'.jpg'
         save_google_map(os.path.join(IMAGES_DIR_DESCRIPTION, file_name), url)
+        sys.stdout.write("\r[" + "#" * (int(((m + 1) / len(zone_images)) * 100)) \
+                         + " " * (int(((len(zone_images) - (m + 1)) / len(zone_images)) * 100)) \
+                         + "] %d%%" % int(m / len(zone_images)*100))
+        sys.stdout.flush()
+        time.sleep(0.005)
         m += 1
+        
+    sys.stdout.write("\r[" + "#" * 100 + "] 100%")                
+    sys.stdout.write("\n")
+        
     
     print("Nombre d'images téléchargées : {}".format(m))
     
