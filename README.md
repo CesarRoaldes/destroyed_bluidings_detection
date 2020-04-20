@@ -15,9 +15,9 @@ We have numbered our notebooks so that the user can easily find their way around
 
 ## Authors
 
-* **[César Roaldès)(https://www.linkedin.com/in/c%C3%A9sar-roaldes-2a1104149/)** 
-* **[Morgane Hoffmann)(https://www.linkedin.com/in/morgane-hoffmann/)**
-* **[Paul Graffan)(https://www.linkedin.com/in/paul-graffan-a16081134/)**
+* **[César Roaldès](https://www.linkedin.com/in/c%C3%A9sar-roaldes-2a1104149/)** 
+* **[Morgane Hoffmann](https://www.linkedin.com/in/morgane-hoffmann/)**
+* **[Paul Graffan](https://www.linkedin.com/in/paul-graffan-a16081134/)**
 
 
 
