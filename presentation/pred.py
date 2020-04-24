@@ -132,8 +132,8 @@ def make_map(description):
     data_preds = gpd.GeoDataFrame(data_preds, geometry='Coordinates')
     
     gpd.GeoSeries(data_preds['Coordinates']).plot(figsize=(10,8), markersize=10)
-    plt.savefig(os.path.join(FIGURE_DIR, 'zone_prediction_' + description + '.jpg'),
-                optimize=True, quality=95)
+#     plt.savefig(os.path.join(FIGURE_DIR, 'zone_prediction_' + description + '.jpg'),
+#                 optimize=True, quality=95)
     
     print("Création de la carte")
     
@@ -142,10 +142,11 @@ def make_map(description):
     gplt.kdeplot(data_preds[data_preds['pred_euroSAT'] == 1], cmap='RdYlGn_r', n_levels=30,
                  shade=True, shade_lowest=False, ax=ax, alpha=0.2,
                  label='Predicted density of destroyed buildings')
-    gplt.pointplot(data_preds, ax=ax)
+    gplt.pointplot(data_preds, ax=ax, color="black", s=1)
 
-    plt.legend(fontsize=5, loc = "lower right")
-    plt.title('Models predictions on ' + description, fontsize=10)
+    plt.legend(fontsize=8, loc = "lower right")
+    
+    plt.title("Priority intervention areas in " + description, fontsize=10)
 
     plt.savefig(os.path.join(FIGURE_DIR, 'model_prediction_' + description + '.jpg'),
                 optimize=True, quality=95)

@@ -19,11 +19,11 @@ if __name__ == "__main__":
     description = args.description
     
     # Download
-    # setup()
-    # download_images(min_lon, min_lat, max_lon, max_lat, description)
+    setup()
+    download_images(min_lon, min_lat, max_lon, max_lat, description)
 
     # Predictions
-    # run_model(description)
+    run_model(description)
 
     # Plot
     make_map(description)
